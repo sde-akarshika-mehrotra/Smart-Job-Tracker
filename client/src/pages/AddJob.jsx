@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import { createJob } from "../api/jobApi";
 
 function AddJob({ jobs, setJobs }) {
 
@@ -19,18 +20,20 @@ function AddJob({ jobs, setJobs }) {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
 
-        const newJob = {
-            id: Date.now(),
-            ...formData
-        };
+        try {
+            const res = await createJob(formData);
 
-        setJobs([...jobs, newJob]);
+            setJobs([...jobs, res.data]);
 
-        console.log("Job Added");
+            console.log("Job Added");
+        } catch (error) {
+            console.error(error);
+        }
 
+    
         setFormData({
             company: "",
             role: "",
