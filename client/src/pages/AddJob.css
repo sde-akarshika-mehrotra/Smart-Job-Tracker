@@ -1,0 +1,56 @@
+.job-form{
+    max-width:700px;
+    margin:30px auto;
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+    background:#1e293b;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+
+.form-input,
+.form-textarea{
+    width:100%;
+    padding:14px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#334155;
+    color:white;
+
+    font-size:16px;
+}
+
+.form-input:focus,
+.form-textarea:focus{
+    outline:2px solid #2563eb;
+}
+
+.form-textarea{
+    min-height:80px;
+    resize:none;
+}
+
+.submit-btn{
+    padding:14px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#2563eb;
+    color:white;
+
+    font-size:16px;
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-2px);
+}

@@ -1,3 +1,4 @@
+import "./Dashboard.css";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import JobCard from "../components/JobCard";
@@ -30,58 +31,81 @@ function Dashboard({ jobs, setJobs }) {
     return (
         <>
             <Navbar />
+            <div className="dashboard-container">
+                <h1 className="page-title">Dashboard</h1>
 
-            <h1>Dashboard</h1>
+                <div className="search-filter">
 
-            <div style={{ marginBottom: "20px" }}>
+                    <input
+                        type="text"
+                        placeholder="Search company..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
 
-                <input
-                    type="text"
-                    placeholder="Search company..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
+                    <select
+                        value={filter}
+                        onChange={(e) => setFilter(e.target.value)}
+                    >
+                        <option value="All">All</option>
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Selected">Selected</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
 
-                <select
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
-                >
-                    <option value="All">All</option>
-                    <option value="Applied">Applied</option>
-                    <option value="Interview">Interview</option>
-                    <option value="Selected">Selected</option>
-                    <option value="Rejected">Rejected</option>
-                </select>
+                </div>
 
+                <div className="stats">
+
+                    <div className="stat-card">
+                        <h3>Total Applications</h3>
+                        <h1>{total}</h1>
+                    </div>
+
+                    <div className="stat-card">
+                        <h3>Applied</h3>
+                        <h1>{applied}</h1>
+                    </div>
+
+                    <div className="stat-card">
+                        <h3>Interview</h3>
+                        <h1>{interview}</h1>
+                    </div>
+
+                    <div className="stat-card">
+                        <h3>Selected</h3>
+                        <h1>{selected}</h1>
+                    </div>
+
+                    <div className="stat-card">
+                        <h3>Rejected</h3>
+                        <h1>{rejected}</h1>
+                    </div>
+
+                </div>
+
+                <h2 className="section-title">
+                    Recent Applications
+                </h2>
+
+                <div className="job-grid">
+                    {
+                        filteredJobs.length > 0 ? (
+                            filteredJobs.map((job) => (
+                                <JobCard
+                                    key={job._id}
+                                    job={job}
+                                    jobs={jobs}
+                                    setJobs={setJobs}
+                                />
+                            ))
+                        ) : (
+                            <p>No jobs found</p>
+                        )
+                    }
+                </div>
             </div>
-
-
-            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-
-                <StatsCard title="Total Applications" value={total} />
-                <StatsCard title="Applied" value={applied} />
-                <StatsCard title="Interview" value={interview} />
-                <StatsCard title="Selected" value={selected} />
-                <StatsCard title="Rejected" value={rejected} />
-
-            </div>
-
-            <hr />
-
-            {
-                filteredJobs.length > 0 ? (
-                    filteredJobs.map((job) => (
-                        <JobCard
-                            key={job._id}
-                            job={job}
-                            jobs={jobs}
-                            setJobs={setJobs}
-                        />
-                    ))
-                ) : (
-                    <p>No jobs found</p>
-                )
-            }
         </>
     );
 

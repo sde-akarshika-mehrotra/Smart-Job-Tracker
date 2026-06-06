@@ -1,3 +1,4 @@
+import "./AddJob.css";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { createJob } from "../api/jobApi";
@@ -20,7 +21,7 @@ function AddJob({ jobs, setJobs }) {
         });
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
@@ -33,7 +34,7 @@ function AddJob({ jobs, setJobs }) {
             console.error(error);
         }
 
-    
+
         setFormData({
             company: "",
             role: "",
@@ -47,61 +48,76 @@ function AddJob({ jobs, setJobs }) {
     return (
         <>
             <Navbar />
-            <h1>AddJob</h1>
+            <div className="dashboard-container">
 
-            <form onSubmit={handleSubmit}>
+                <h1 className="page-title">
+                    Add New Job
+                </h1>
 
-                <input
-                    type="text"
-                    name="company"
-                    placeholder="Company"
-                    value={formData.company}
-                    onChange={handleChange}
-                />
+                <form className="job-form" nSubmit={handleSubmit}>
 
-                <input
-                    type="text"
-                    name="role"
-                    placeholder="Role"
-                    value={formData.role}
-                    onChange={handleChange}
-                />
+                    <input
+                        className="form-input"
+                        type="text"
+                        name="company"
+                        placeholder="Company"
+                        value={formData.company}
+                        onChange={handleChange}
+                    />
 
-                <input
-                    type="text"
-                    name="status"
-                    placeholder="Status"
-                    value={formData.status}
-                    onChange={handleChange}
-                />
+                    <input
+                        className="form-input"
+                        type="text"
+                        name="role"
+                        placeholder="Role"
+                        value={formData.role}
+                        onChange={handleChange}
+                    />
 
-                <input
-                    type="text"
-                    name="location"
-                    placeholder="Location"
-                    value={formData.location}
-                    onChange={handleChange}
-                />
+                    <select
+                        className="form-input"
+                        name="status"
+                        value={formData.status}
+                        onChange={handleChange}
+                    >
+                        <option value="">Select Status</option>
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Selected">Selected</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
 
-                <input
-                    type="date"
-                    name="date"
-                    placeholder="Date"
-                    value={formData.date}
-                    onChange={handleChange}
-                />
+                    <input
+                        className="form-input"
+                        type="text"
+                        name="location"
+                        placeholder="Location"
+                        value={formData.location}
+                        onChange={handleChange}
+                    />
 
-                <textarea
-                    name="notes"
-                    placeholder="Notes"
-                    value={formData.notes}
-                    onChange={handleChange}
-                />
+                    <input
+                        className="form-input"
+                        type="date"
+                        name="date"
+                        placeholder="Date"
+                        value={formData.date}
+                        onChange={handleChange}
+                    />
 
-                <button type="submit">
-                    Add Job
-                </button>
-            </form>
+                    <textarea
+                        className="form-textarea"
+                        name="notes"
+                        placeholder="Notes"
+                        value={formData.notes}
+                        onChange={handleChange}
+                    />
+
+                    <button className="submit-btn" type="submit">
+                        Add Job
+                    </button>
+                </form>
+            </div>
         </>
     );
 

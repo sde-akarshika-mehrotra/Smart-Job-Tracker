@@ -25,33 +25,38 @@ function JobsList({ jobs, setJobs }) {
         <>
             <Navbar />
 
-            <h1>Jobs List</h1>
+            <div className="dashboard-container">
 
-        
-            <SearchBar
-                search={search}
-                setSearch={setSearch}
-            />
+                <h1 className="page-title">Jobs List</h1>
 
-    
-            <FilterDropDown
-                filter={filter}
-                setFilter={setFilter}
-            />
+                <div className="search-filter">
 
-        
-            {filteredJobs.length > 0 ? (
-                filteredJobs.map((job) => (
-                    <JobCard
-                        key={job._id}  
-                        job={job}
-                        jobs={jobs}
-                        setJobs={setJobs}
+                    <SearchBar
+                        search={search}
+                        setSearch={setSearch}
                     />
-                ))
-            ) : (
-                <p>No jobs found</p>
-            )}
+
+                    <FilterDropDown
+                        filter={filter}
+                        setFilter={setFilter}
+                    />
+                </div>
+
+                <div className="job-grid">
+                    {filteredJobs.length > 0 ? (
+                        filteredJobs.map((job) => (
+                            <JobCard
+                                key={job._id}
+                                job={job}
+                                jobs={jobs}
+                                setJobs={setJobs}
+                            />
+                        ))
+                    ) : (
+                        <p>No jobs found</p>
+                    )}
+                </div>
+            </div>
 
         </>
     );

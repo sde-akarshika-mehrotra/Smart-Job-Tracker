@@ -28,10 +28,11 @@ function JobCard({ job, jobs, setJobs }) {
 
             <p>{job.location}</p>
 
-            <button onClick={() => navigate (`/edit/${job._id}`)}>Edit</button>
+            <div className="btn-group">
+                <button className="edit-btn" onClick={() => navigate(`/edit/${job._id}`)}>Edit</button>
 
-            <button onClick={handledelete}>Delete</button>
-
+                <button className="delete-btn" onClick={handledelete}>Delete</button>
+            </div>
         </div>
     );
 }
