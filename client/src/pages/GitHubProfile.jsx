@@ -1,5 +1,6 @@
+import "./GitHubProfile.css";
 import { useState } from "react";
-// import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar";
 
 function GitHubProfile() {
 
@@ -11,7 +12,7 @@ function GitHubProfile() {
     const fetchUser = async () => {
 
         if (!username.trim()) {
-            setError("Please enter username");
+            setError("Please enter username !");
             return;
         }
 
@@ -40,27 +41,39 @@ function GitHubProfile() {
 
     return (
         <>
-            {/* <Navbar /> */}
+            <Navbar />
 
-            <div style={{ padding: "20px" }}>
-                <h1>GitHub Profile</h1>
+            <div className="dashboard-container">
 
-                <input
-                    placeholder="Enter GitHub username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+                <h1 className="page-title">
+                    GitHub Profile
+                </h1>
 
-                <button onClick={fetchUser}>
-                    Search
-                </button>
+                <div className="github-search">
+
+                    <input
+                        className="github-input"
+                        placeholder="Enter GitHub username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+
+                    <button
+                        className="github-btn"
+                        onClick={fetchUser}>
+                        Search
+                    </button>
+
+                </div>
 
                 {loading && <p>Loading...</p>}
-                {error && <p style={{ color: "red" }}>{error}</p>}
+                {error && <p className="github-error">{error}</p>}
 
                 {data && (
-                    <div style={{ marginTop: "20px" }}>
+                    <div className="github-card">
+
                         <img
+                            className="github-avatar"
                             src={data.avatar_url}
                             width="120"
                             style={{ borderRadius: "50%" }}
@@ -72,7 +85,9 @@ function GitHubProfile() {
                         <p>Following: {data.following}</p>
                         <p>Public Repos: {data.public_repos}</p>
 
-                        <a href={data.html_url} target="_blank" rel="noreferrer">
+                        <a
+                            className="github-link"
+                            href={data.html_url} target="_blank" rel="noreferrer">
                             Visit Profile
                         </a>
                     </div>

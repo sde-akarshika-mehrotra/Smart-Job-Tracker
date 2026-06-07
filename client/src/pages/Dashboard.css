@@ -108,7 +108,7 @@
 .dashboard-container {
     max-width: 1200px;
     margin: auto;
-    padding: 30px;
+    padding: 15px 30px;
 }
 
 .section-title {
@@ -122,4 +122,8 @@
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 14px;
+}
+
+.not-found {
+    font-size: 2rem;
 }

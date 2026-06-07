@@ -101,7 +101,7 @@ function Dashboard({ jobs, setJobs }) {
                                 />
                             ))
                         ) : (
-                            <p>No jobs found</p>
+                            <p className="not-found">No jobs found ❌</p>
                         )
                     }
                 </div>
