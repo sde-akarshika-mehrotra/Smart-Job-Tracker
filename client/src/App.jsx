@@ -33,7 +33,7 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route path="/" element={<Dashboard jobs={jobs} />} />
+        <Route path="/" element={<Dashboard jobs={jobs} setJobs={setJobs} />} />
         <Route path="/add-job" element={<AddJob jobs={jobs} setJobs={setJobs} />} />
         <Route path="/jobs" element={<JobList jobs={jobs} setJobs={setJobs} />} />
         <Route path="/edit/:id" element={<EditJob jobs={jobs} setJobs={setJobs} />} />
