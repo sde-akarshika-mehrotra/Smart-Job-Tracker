@@ -127,3 +127,43 @@
 .not-found {
     font-size: 2rem;
 }
+
+
+@media (max-width: 768px) {
+
+    .page-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .search-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-filter input,
+    .search-filter select {
+        width: 100%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .job-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 100%;
+    }
+
+    .dashboard-container {
+        padding: 15px;
+    }
+}

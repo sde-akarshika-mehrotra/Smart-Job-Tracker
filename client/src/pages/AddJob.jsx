@@ -54,7 +54,7 @@ function AddJob({ jobs, setJobs }) {
                     Add New Job
                 </h1>
 
-                <form className="job-form" nSubmit={handleSubmit}>
+                <form className="job-form" onSubmit={handleSubmit}>
 
                     <input
                         className="form-input"
