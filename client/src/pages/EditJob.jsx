@@ -1,3 +1,4 @@
+import "./EditJob.css";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -17,7 +18,7 @@ function EditJob({ jobs, setJobs }) {
         notes: ""
     });
 
-    //LOADS EXISTING JOB
+    
     useEffect(() => {
         const selectedJob = jobs.find(
             (job) => job._id === id
@@ -29,7 +30,7 @@ function EditJob({ jobs, setJobs }) {
     }, [id, jobs]);
 
 
-    //input change
+    
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -37,7 +38,7 @@ function EditJob({ jobs, setJobs }) {
         });
     };
 
-    //submit update
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -45,7 +46,7 @@ function EditJob({ jobs, setJobs }) {
         try {
             const updated = await updateJob(id, formData);
 
-            // UI update
+    
             setJobs((prev) =>
                 prev.map((job) =>
                     job._id === id ? updated.data : job
@@ -64,47 +65,63 @@ function EditJob({ jobs, setJobs }) {
         <>
             <Navbar />
 
-            <div>
-                <h1>Edit Job</h1>
+            <div className="edit-container">
+                <h1 className="edit-title">Edit Job</h1>
 
-                <form onSubmit={handleSubmit}>
+                <form
+                    className="edit-form"
+                    onSubmit={handleSubmit}>
+
                     <input
+                        className="edit-input"
                         name="company"
                         value={formData.company || ""}
                         onChange={handleChange}
                     />
 
                     <input
+                        className="edit-input"
                         name="role"
                         value={formData.role || ""}
                         onChange={handleChange}
                     />
 
-                    <input
+                    <select
+                        className="edit-input"
                         name="status"
                         value={formData.status || ""}
                         onChange={handleChange}
-                    />
+                    >
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Selected">Selected</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
 
                     <input
+                        className="edit-input"
                         name="location"
                         value={formData.location || ""}
                         onChange={handleChange}
                     />
 
                     <input
+                        className="edit-input"
                         name="date"
                         value={formData.date || ""}
                         onChange={handleChange}
                     />
 
                     <textarea
+                        className="edit-textarea"
                         name="notes"
                         value={formData.notes || ""}
                         onChange={handleChange}
                     />
 
-                    <button type="submit">
+                    <button
+                        className="update-btn"
+                        type="submit">
                         Update Job
                     </button>
                 </form>

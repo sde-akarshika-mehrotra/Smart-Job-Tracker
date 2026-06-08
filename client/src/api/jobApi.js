@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/jobs";
+const BASE_URL =
+    "https://smart-job-tracker-nw3u.onrender.com/api/jobs";
 
 export const getJobs = () => axios.get(BASE_URL);
 export const createJob = (data) => axios.post(BASE_URL, data);

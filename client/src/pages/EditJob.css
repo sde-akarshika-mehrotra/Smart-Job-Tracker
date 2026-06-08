@@ -1,0 +1,90 @@
+.edit-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 30px;
+}
+
+.edit-title {
+    font-size: 3rem;
+    margin: 10px 0 20px;
+}
+
+.edit-form {
+    max-width: 700px;
+    margin: 30px auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.edit-input,
+.edit-textarea {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #334155;
+    color: white;
+
+    font-size: 16px;
+}
+
+.edit-input:focus,
+.edit-textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #2563eb;
+}
+
+.edit-textarea {
+    min-height: 80px;
+    resize: none;
+}
+
+.update-btn {
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #2563eb;
+    color: white;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.update-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+@media(max-width:768px) {
+
+    .edit-container {
+        padding: 15px;
+    }
+
+    .edit-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .edit-form {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+
+    .update-btn {
+        width: 100%;
+    }
+}
